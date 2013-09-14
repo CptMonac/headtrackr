@@ -99,7 +99,7 @@
 
 			document.addEventListener("headtrackingEvent", function(event)
 			{
- 				var Screen_Distance = documentgetElementById('headtrackerDistance');
+ 				var Screen_Distance = document.getElementById('headtrackerDistance');
 				Screen_Distance.innerHTML = event.z + "cm";
 			});
 			
