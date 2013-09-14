@@ -27,6 +27,7 @@
 		
 		<p id='gUMMessage'></p>
 		<p>Status : <span id='headtrackerMessage'></span></p>
+		<p>Face Distance: <span id = 'headtrackerDistance'></span></p>
 		<p><input type="button" onclick="htracker.stop();htracker.start();" value="reinitiate facedetection"></input>
 		<br/><br/>
 		<input type="checkbox" onclick="showProbabilityCanvas()" value="asdfasd"></input>Show probability-map</p>
@@ -94,6 +95,12 @@
 					overlayContext.rotate((Math.PI/2)-event.angle);
 					overlayContext.translate(-event.x, -event.y);
 				}
+			});
+
+			document.addEventListener("headtrackingEvent", function(event)
+			{
+ 				var Screen_Distance = documentgetElementById('headtrackerDistance');
+				Screen_Distance.innerHTML = event.z + "cm";
 			});
 			
 			// turn off or on the canvas showing probability
