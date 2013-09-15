@@ -39,6 +39,7 @@
 			var canvasOverlay = document.getElementById('overlay')
 			var debugOverlay = document.getElementById('debug');
 			var overlayContext = canvasOverlay.getContext('2d');
+			var Activity_View = document.getElementById('activityStatus');
 			canvasOverlay.style.position = "absolute";
 			canvasOverlay.style.top = '0px';
 			canvasOverlay.style.zIndex = '100001';
@@ -71,6 +72,9 @@
 				} else if (event.status in statusMessages) {
 					var messagep = document.getElementById('headtrackerMessage');
 					messagep.innerHTML = statusMessages[event.status];
+
+					if (event.status === "redetecting")
+						Activity_View.innerHTML = "Far Reading";
 				}
 			}, true);
 			
@@ -98,14 +102,13 @@
 
 			document.addEventListener("headtrackingEvent", function(event)
 			{
-				var Activity_View = document.getElementById('activityStatus');
 
 				if (event.z < 75)
-					Activity_View.innerHTML = "Near Reading (" + event.z + "cm)";
+					Activity_View.innerHTML = "Near Reading"; // (" + event.z + "cm)";
 				else if (event.z > 140)
-					Activity_View.innerHTML = "Far Reading (" + event.z + "cm)";
+					Activity_View.innerHTML = "Far Reading"; // (" + event.z + "cm)";
 				else
-					Activity_View.innerHTML = "Medium Reading (" + event.z + "cm)";
+					Activity_View.innerHTML = "Medium Reading"; // (" + event.z + "cm)";
 			
 			});
 			
