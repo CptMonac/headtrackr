@@ -100,12 +100,13 @@
 			{
 				var Activity_View = document.getElementById('activityStatus');
 
-				if (event.z < 35)
+				if (event.z < 75)
 					Activity_View.innerHTML = "Near Reading (" + event.z + "cm)";
-				else if ((event. z >=35) && (event.z < 66))
-					Activity_View.innerHTML = "Medium Reading (" + event.z + "cm)";
-				else
+				else if (event.z > 140)
 					Activity_View.innerHTML = "Far Reading (" + event.z + "cm)";
+				else
+					Activity_View.innerHTML = "Medium Reading (" + event.z + "cm)";
+			
 			});
 			
 			// turn off or on the canvas showing probability
