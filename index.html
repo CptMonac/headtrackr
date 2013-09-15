@@ -26,7 +26,6 @@
 		
 		<p id='gUMMessage'></p>
 		<p>Status : <span id='headtrackerMessage'></span></p>
-		<p hidden>Face Distance: <span id = 'headtrackerDistance'></span></p>
 		<p> Activity Status: <span id = 'activityStatus'></span></p>
 		<p><input type="button" onclick="htracker.stop();htracker.start();" value="reinitiate facedetection"></input>
 		<br/><br/>
@@ -83,32 +82,30 @@
 			
 			// for each facetracking event received draw rectangle around tracked face on canvas
 			
-			document.addEventListener("facetrackingEvent", function( event ) {
-				// clear canvas
-				overlayContext.clearRect(0,0,320,240);
-				// once we have stable tracking, draw rectangle
-			// 	if (event.detection == "CS") {
-			// 		overlayContext.translate(event.x, event.y)
-			// 		overlayContext.rotate(event.angle-(Math.PI/2));
-			// 		overlayContext.strokeStyle = "#00CC00";
-			// 		overlayContext.strokeRect((-(event.width/2)) >> 0, (-(event.height/2)) >> 0, event.width, event.height);
-			// 		overlayContext.rotate((Math.PI/2)-event.angle);
-			// 		overlayContext.translate(-event.x, -event.y);
-			// 	}
-			// });
+			// document.addEventListener("facetrackingEvent", function( event ) {
+			// 	// clear canvas
+			// 	overlayContext.clearRect(0,0,320,240);
+			// 	// once we have stable tracking, draw rectangle
+			// // 	if (event.detection == "CS") {
+			// // 		overlayContext.translate(event.x, event.y)
+			// // 		overlayContext.rotate(event.angle-(Math.PI/2));
+			// // 		overlayContext.strokeStyle = "#00CC00";
+			// // 		overlayContext.strokeRect((-(event.width/2)) >> 0, (-(event.height/2)) >> 0, event.width, event.height);
+			// // 		overlayContext.rotate((Math.PI/2)-event.angle);
+			// // 		overlayContext.translate(-event.x, -event.y);
+			// // 	}
+			// // });
 
 			document.addEventListener("headtrackingEvent", function(event)
 			{
- 				var Screen_Distance = document.getElementById('headtrackerDistance');
 				var Activity_View = document.getElementById('activityStatus');
-				Screen_Distance.innerHTML = event.z + "cm";
 
 				if (event.z < 35)
-					Activity_View.innerHTML = "Near Reading";
+					Activity_View.innerHTML = "Near Reading (" + event.z + "cm)";
 				else if ((event. z >=35) && (event.z < 66))
-					Activity_View.innerHTML = "Medium Reading";
+					Activity_View.innerHTML = "Medium Reading (" + event.z + "cm)";
 				else
-					Activity_View.innerHTML = "Far Reading";
+					Activity_View.innerHTML = "Far Reading (" + event.z + "cm)";
 			});
 			
 			// turn off or on the canvas showing probability
