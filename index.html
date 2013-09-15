@@ -20,8 +20,8 @@
 	<body>
 		<script src="javascripts/headtrackr.js"></script>
 		<canvas id="compare" width="320" height="240" style="display:none"></canvas>
-		<video id="vid" autoplay loop width="320" height="240"></video>
-		<canvas id="overlay" width="320" height="240"></canvas>
+		<video id="vid" autoplay loop width="320" height="240" hidden></video>
+		<canvas id="overlay" width="320" height="240" hidden></canvas>
 		<canvas id="debug" width="320" height="240"></canvas>
 		
 		<p id='gUMMessage'></p>
@@ -105,7 +105,7 @@
 
 				if (event.z < 35)
 					Activity_View.innerHTML = "Near Reading";
-				else if ((event. z >=35) && (event.z < 60))
+				else if ((event. z >=35) && (event.z < 66))
 					Activity_View.innerHTML = "Medium Reading";
 				else
 					Activity_View.innerHTML = "Far Reading";
